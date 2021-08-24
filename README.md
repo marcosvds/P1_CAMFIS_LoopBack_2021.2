@@ -16,6 +16,7 @@
 </ul>
 
 <h2>Informações da Atividade</h2>
+<p>Neste projeto desenvolvemos um software em Python para transmissão e recepção serial simultânea</p>
 
 <h3>Objetivos:</h3>
 <ul>
