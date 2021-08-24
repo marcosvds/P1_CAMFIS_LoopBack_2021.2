@@ -25,8 +25,8 @@ serialName = "COM3"                  # Windows(variacao de)
 
 def main():
     try:
-        #declaramos um objeto do tipo enlace com o nome "com". Essa é a camada inferior à aplicação. Observe que um parametro
-        #para declarar esse objeto é o nome da porta.
+        # declaramos um objeto do tipo enlace com o nome "com". Essa é a camada inferior à aplicação. Observe que um parametro
+        # para declarar esse objeto é o nome da porta.
         com1 = enlace('COM3')
         
     
@@ -39,20 +39,29 @@ def main():
 
         
         
-        #aqui você deverá gerar os dados a serem transmitidos. 
-        #seus dados a serem transmitidos são uma lista de bytes a serem transmitidos. Gere esta lista com o 
-        #nome de txBuffer. Esla sempre irá armazenar os dados a serem enviados.     
-        #txBuffer = imagem em bytes!
+        # aqui você deverá gerar os dados a serem transmitidos. 
+        #s eus dados a serem transmitidos são uma lista de bytes a serem transmitidos. Gere esta lista com o 
+        # nome de txBuffer. Esla sempre irá armazenar os dados a serem enviados.     
+        # txBuffer = imagem em bytes!
     
         # Endereço da imagem a ser transmitida
 
-        #image1 = "./imgs/image.png"
+        image1 = "./imgs/image.png"
+        #image1 = r"C:\Users\Marqu\OneDrive\Documentos\Insper\4º Semestre\Camada Física da Computação\Projetos\Loopback\P1_CAMFIS_LoopBack_2021.2\imgs\image.png"
 
+        # Lista de bytes com a imagem a ser transmitida
+        print("\n")
+        print("Carregando imagem para transmissão")
+        print("\n")
+        print("Endereço da imagem a ser transmitida: {}".format(image1))
+        print("\n")
 
-
-    
-        #faça aqui uma conferência do tamanho do seu txBuffer, ou seja, quantos bytes serão enviados.
-       
+        txBuffer = open(image1, 'rb').read()
+ 
+        # faça aqui uma conferência do tamanho do seu txBuffer, ou seja, quantos bytes serão enviados.
+        tamTxBuffer = len(txBuffer)
+        print("Tamanho do txBuffer: {}" .format(tamTxBuffer))
+        print("\n")
             
         #finalmente vamos transmitir os tados. Para isso usamos a funçao sendData que é um método da camada enlace.
         #faça um print para avisar que a transmissão vai começar.
