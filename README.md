@@ -7,7 +7,7 @@
 <h3>Alunos:</h3>
 <ul>
   <li><a href=https://www.linkedin.com/in/guilherme-rosada/>Guilherme Rosada</a></li>
-  <li><a href=https://www.linkedin.com/in/marcosvinis28/>Marcos Vinícius da Silva</a></li>
+  <li><a href=https://www.linkedin.com/in/marcosvinis//>Marcos Vinícius da Silva</a></li>
 </ul>
 
 <h3>Professor:</h3> 
