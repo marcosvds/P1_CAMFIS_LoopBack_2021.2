@@ -11,7 +11,7 @@
 import time
 
 # Interface Física
-from interfaceFisica import fisica
+from interfaceFisica import *
 
 # enlace Tx e Rx
 from enlaceRx import RX

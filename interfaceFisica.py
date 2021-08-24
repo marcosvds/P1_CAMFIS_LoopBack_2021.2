@@ -2,9 +2,12 @@
 # -*- coding: utf-8 -*-
 
 #####################################################
-#Carareto
-#17/02/2018
-####################################################
+# Engenharia de Computação Insper
+# Camada Física da Computação 2021.2# 
+# Professor: Rodrigo Carareto
+# Aluno: Marcos Vinícius da Silva
+# Data de criação do arquivo: 24/08/2021
+#####################################################
 
 # Importa pacote de comunicação serial
 import serial
@@ -15,12 +18,12 @@ import binascii
 #################################
 # Interface com a camada física #
 #################################
+
 class fisica(object):
     def __init__(self, name):
         self.name        = name
         self.port        = None
         self.baudrate    = 115200
-        #self.baudrate    = 9600
         self.bytesize    = serial.EIGHTBITS
         self.parity      = serial.PARITY_NONE
         self.stop        = serial.STOPBITS_ONE
@@ -34,7 +37,6 @@ class fisica(object):
                                   self.parity,
                                   self.stop,
                                   self.timeout)
-
 
     def close(self):
         self.port.close()
