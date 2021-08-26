@@ -14,3 +14,12 @@
 <ul>
   <li><a href=https://www.insper.edu.br/pesquisa-e-conhecimento/docentes-pesquisadores/rodrigo-carareto/>Rodrigo Carareto</a></li>
 </ul>
+
+<h2>Informações da Atividade</h2>
+<p>Neste projeto desenvolvemos um software em Python para transmissão e recepção serial simultânea.</p>
+
+<h3>Objetivos:</h3>
+<ul>
+   <li>Enviar uma imagem (a menor possível) através da porta de comunicação serial.</li>
+   <li>Receber a imagem simultaneamente ao envio e salva-la como uma cópia. Para isso a recepção do Arduino (pino rx) deve estar curto-circuitada com o pino de transmissão (pino tx).</li>
+</ul>
