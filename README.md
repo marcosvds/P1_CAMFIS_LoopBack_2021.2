@@ -23,3 +23,8 @@
    <li>Enviar uma imagem (a menor possível) através da porta de comunicação serial.</li>
    <li>Receber a imagem simultaneamente ao envio e salva-la como uma cópia. Para isso a recepção do Arduino (pino rx) deve estar curto-circuitada com o pino de transmissão (pino tx).</li>
 </ul>
+
+<h3>Apresentação do software em funcionamento:</h3>
+<ul>
+   <li><a href=https://youtu.be/K3I-WqXZZeo>Vídeo.</a></li>
+</ul>
