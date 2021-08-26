@@ -11,6 +11,7 @@
 
 from enlace import *
 import numpy as np
+import time
 
 # voce deverá descomentar e configurar a porta com através da qual ira fazer comunicaçao
 # para saber a sua porta, execute no terminal:
@@ -38,9 +39,8 @@ def main():
         print("----------------------------------")
 
         # aqui você deverá gerar os dados a serem transmitidos. 
-        #s eus dados a serem transmitidos são uma lista de bytes a serem transmitidos. Gere esta lista com o 
-        # nome de txBuffer. Esla sempre irá armazenar os dados a serem enviados.     
-        # txBuffer = imagem em bytes!
+        # seus dados a serem transmitidos são uma lista de bytes a serem transmitidos. Gere esta lista com o 
+        # nome de txBuffer. Esla sempre irá armazenar os dados a serem enviados. txBuffer = imagem em bytes!
     
         # Endereço da imagem a ser transmitida
         imagemTransmitida = "./imgs/image.png"
@@ -55,18 +55,21 @@ def main():
         print("Endereço da imagem a ser transmitida: {}".format(imagemTransmitida))
         print("\n")
 
-        txBuffer = open(imagemTransmitida, 'rb').read()
+        txBuffer = open(imagemTransmitida, 'rb').read() # TX ok
+
+        # conferência do tipo do TxBuffer
+        print(type(txBuffer))
+        print("\n")
  
         # faça aqui uma conferência do tamanho do seu txBuffer, ou seja, quantos bytes serão enviados.
         tamTxBuffer = len(txBuffer)
         print("Tamanho do txBuffer: {}" .format(tamTxBuffer))
         print("\n")
+        
+        print("Bytes carregados em Tx:")
         print(txBuffer)
         print("\n")
-        print(type(txBuffer))
-        print("\n")
-
-        # --------------- Aqui --------------   
+  
         # finalmente vamos transmitir os tados. Para isso usamos a funçao sendData que é um método da camada enlace.
         # faça um print para avisar que a transmissão vai começar.
         # tente entender como o método send funciona!
@@ -78,13 +81,16 @@ def main():
         print("\n")
 
         com1.sendData(np.asarray(txBuffer))
+
+        #É necessário colocar um timer aqui para ter tempo, se estiver trabalhando com um arduino (porta real). Nesse caso, é preciso colocar um timer: time.sleep(0.1)
+        #timer: time.sleep(0.1)
        
         # A camada enlace possui uma camada inferior, TX possui um método para conhecermos o status da transmissão
         # Tente entender como esse método funciona e o que ele retorna
 
-        #txSize = com1.tx.getStatus()
-        #print("Status da transmissão: {}".format(txSize))
-        #print("\n")
+        txSize = com1.tx.getStatus()
+        print("Status da transmissão: {}".format(txSize))
+        print("\n")
         
         # Agora vamos iniciar a recepção dos dados. Se algo chegou ao RX, deve estar automaticamente guardado
         # Observe o que faz a rotina dentro do thread RX
@@ -99,14 +105,26 @@ def main():
         # Veja o que faz a funcao do enlaceRX  getBufferLen
       
         # acesso aos bytes recebidos
-        #txLen = len(txBuffer)
-        #rxBuffer, nRx = com1.getData(txLen)
-        #print("recebeu {}" .format(rxBuffer))
-            
+        txLen = len(txBuffer)
+        rxBuffer, nRx = com1.getData(txLen)
+        # faça aqui uma conferência do tamanho do seu RxBuffer, ou seja, quantos bytes serão enviados.
+        tamRxBuffer = len(rxBuffer)
+        print("Tamanho do rxBuffer: {}" .format(tamRxBuffer))
+        print("\n")
+        print("Bytes carregados em Rx: \n {}" .format(rxBuffer))        
+        print("\n")            
+        
         # Escreve arquivo cópia
         print("Salvando dados no arquivo")
         print("Endereço da imagem recebido: {}" .format(imagemRecebida))
         print("\n")
+        file = open(imagemRecebida, 'wb')
+        file.write(rxBuffer)
+        print("Arquivo de imagem salvo!")
+        print("\n")
+
+        # Fecha arquivo de imagem
+        file.close()
     
         # Encerra comunicação
         print("----------------------------------")
